@@ -23,7 +23,7 @@
 | イベント | 対象 | 実行内容 |
 |---------|------|---------|
 | pull_request | main 向け PR | フル CI |
-| push | main | フル CI + CD |
+| push | main | フル CI + E2E + CD |
 | schedule | 毎日 00:00 UTC | セキュリティスキャン |
 
 ### ジョブ構成
@@ -35,6 +35,8 @@ paths-filter
   └─ [infra変更] Terraform Lint → Plan ──────────────────┤
                                                          ▼
                                                  Coverage Gate
+                                                         │
+                                              E2E Test (main のみ)
                                                          │
                                               Docker Build + Trivy
                                                          │

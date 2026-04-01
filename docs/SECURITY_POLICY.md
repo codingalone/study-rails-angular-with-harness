@@ -42,7 +42,7 @@
 
 ### pre-commit hook
 
-`~/dotfiles/hooks/pre-commit` を `.git/hooks/` にコピーして使用する。staged diff を Claude に渡し、秘密情報の有無を PASS/FAIL 判定する。
+pre-commit hook を `.git/hooks/` にインストールして使用する（インストール手順は DEVELOPMENT_GUIDE.md を参照）。staged diff を Claude に渡し、秘密情報の有無を PASS/FAIL 判定する。
 
 - `--no-verify` によるスキップは**原則禁止**
 - Claude CLI 未インストール環境ではフォールバックとして警告を出力

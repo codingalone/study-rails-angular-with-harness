@@ -11,7 +11,7 @@
                     |
               +-----+-----+
               |           |
-        [S3 Bucket]  [ALB (Private)]
+        [S3 Bucket]  [ALB (Internet-facing)]
         (Angular SPA)     |
                     [ECS Fargate]
                     (Rails API)
