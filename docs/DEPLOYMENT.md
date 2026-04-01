@@ -131,6 +131,7 @@ aws ecs wait services-stable --cluster prd-cluster --services prd-rails-api
 
 - デプロイ前にワンショット ECS タスクで実行
 - 成功 → アプリ更新、失敗 → デプロイ中止
+- デプロイ承認ゲートで承認済みのマイグレーションが自動実行される（個別の承認は不要）。
 
 ### 破壊的マイグレーション
 
@@ -165,12 +166,12 @@ aws ecs wait services-stable --cluster prd-cluster --services prd-rails-api
 
 | サービス | 構成 | 月額概算 |
 |---------|------|---------|
-| ECS Fargate (API) | 0.25 vCPU / 512 MB × 1 | ~$9 |
+| ECS Fargate (API) | 0.25 vCPU / 512 MB × 1 (Spot) | ~$9 |
 | S3 + CloudFront (SPA) | 静的配信 | ~$0 |
 
 ### Fargate Spot
 
-クローズド環境で中断許容可能なら Fargate Spot を活用（最大 70% 削減）。
+本プロジェクトではクローズド環境かつ学習用途のため、Fargate Spot をデフォルトで採用（最大 70% 削減）。
 
 ### リソース停止
 

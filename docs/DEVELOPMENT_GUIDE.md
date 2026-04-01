@@ -48,6 +48,7 @@ docker compose up -d
 
 # 5. データベースを初期化
 docker compose exec api bundle exec rails db:create db:migrate db:seed
+# 初回セットアップのマイグレーション実行は承認不要（新規マイグレーションファイルの作成が承認対象）
 
 # 6. 動作確認
 # API: http://localhost:3000/api/health
@@ -199,11 +200,18 @@ docs/specs/
 ### ユーザー承認必須（MUST ASK）
 
 - 仕様の承認
+- AWS リソースの変更・削除
 - 新しい gem / npm パッケージの追加
 - DB マイグレーションの作成・実行
+- デプロイ操作
+- セキュリティに関わる設定変更
+- 課金が発生する可能性のある操作
+- 外部公開に関わる設定変更
 - Docker 構成変更
 - 破壊的 Git 操作
 - ファイルの削除
+
+> 完全な一覧は CLAUDE.md の Permission Model を参照。
 
 ### 自律実行可能（CAN DO）
 
