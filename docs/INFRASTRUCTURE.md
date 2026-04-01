@@ -19,7 +19,7 @@
 | コンピュート | ECS Fargate (Spot) | 0.25 vCPU / 512 MB |
 | DB | RDS PostgreSQL | db.t4g.micro、単一 AZ |
 | ネットワーク | VPC + NAT Instance | t4g.nano (NAT Gateway の代替) |
-| シークレット | SSM Parameter Store | SecureString (KMS 暗号化) |
+| シークレット | SSM Parameter Store / Secrets Manager | SecureString (KMS 暗号化)。原則 SSM、高頻度ローテーション対象は Secrets Manager |
 | ログ | CloudWatch Logs | 30 日保持 |
 | コスト管理 | AWS Budgets | 月額アラート |
 

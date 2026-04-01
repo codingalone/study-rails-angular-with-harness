@@ -72,6 +72,7 @@
 ### 承認プロセス
 
 GitHub Environments > production:
+(GitHub 上の名称は `production`、AWS/Terraform リソース名のプレフィックスは `prd`)
 - Required reviewers: 承認者リスト
 - Deployment branches: main のみ
 

@@ -144,7 +144,7 @@ frame-ancestors 'none'; base-uri 'self'; form-action 'self';
 |------|------|
 | AWS Budgets | 月額 $50 / $100 / $200 でアラート |
 | Cost Anomaly Detection | 有効化（異常コスト自動検知） |
-| SCP (リージョン制限) | ap-northeast-1, us-east-1 のみ許可 |
+| SCP (リージョン制限) | ap-northeast-1, us-east-1 (CloudFront/ACM 等のグローバルサービス用) のみ許可 |
 | SCP (インスタンス制限) | t3.*/t3a.*/t4g.* のみ許可 |
 | ECS スケーリング上限 | 最大タスク数: 4 |
 | RDS ストレージ上限 | max_allocated_storage: 50GB |
