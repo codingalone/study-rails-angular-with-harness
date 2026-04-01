@@ -9,7 +9,7 @@
 ```
 [GitHub main merge]
     ↓
-[CI: lint → test → build → security scan]
+[CI: lint → test → E2E → build → security scan]
     ↓
 [Docker Build → ECR Push]
     ↓
