@@ -16,7 +16,7 @@ AI が仕様駆動で自律開発し、テストで品質を保証する。
 | Backend API | Ruby on Rails (API mode) |
 | Frontend SPA | Angular (Standalone Components) |
 | Database | PostgreSQL 16 |
-| Cache | Redis 7 |
+| Cache / Job Queue | Redis 7 |
 | Local Dev | Docker Compose |
 | Infrastructure | AWS (Terraform ~> 1.9) |
 | CI/CD | GitHub Actions |

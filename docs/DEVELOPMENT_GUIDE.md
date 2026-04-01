@@ -75,7 +75,7 @@ docker compose exec api bundle exec rails db:create db:migrate db:seed
 | api | 127.0.0.1:3000 | Rails API |
 | web | 127.0.0.1:4200 | Angular dev server |
 | postgres | 127.0.0.1:5432 | データベース |
-| redis | 127.0.0.1:6379 | キャッシュ |
+| redis | 127.0.0.1:6379 | キャッシュ / ジョブキュー |
 | e2e | — | E2E テスト (オンデマンド) |
 
 ### ポートバインド
