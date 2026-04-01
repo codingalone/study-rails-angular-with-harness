@@ -9,9 +9,7 @@
 ```
 [GitHub main merge]
     ↓
-[CI: lint → test → E2E → build → security scan]
-    ↓
-[Docker Build → ECR Push]
+[CI: lint → test → coverage gate → E2E → Docker Build + security scan]
     ↓
 [承認ゲート (GitHub Environment)]  ★ユーザー承認必須
     ↓

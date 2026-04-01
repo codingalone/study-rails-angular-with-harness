@@ -42,7 +42,7 @@ AI が仕様駆動で自律開発し、テストで品質を保証する。
 - **分岐カバレッジ**: 95% 以上（主指標）
 - **行カバレッジ**: 100%（補助指標）
 - **関数・文カバレッジ**: 100%（Angular / Jest のみ）
-- 除外対象: `db/schema.rb`, `db/migrate/`, `config/`, `environment.ts`
+- 除外対象: `db/schema.rb`, `db/migrate/`, `config/`, `environment.ts`, ルーティング定義
 - カバレッジが基準を下回る PR はマージ不可
 
 ---
@@ -55,8 +55,8 @@ Conventional Commits 形式。
 <type>(<scope>): <description>
 ```
 
-type: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`
-scope: `api`, `web`, `infra`, `ci`, `spec`
+type: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`, `spec`
+scope: `api`, `web`, `infra`, `ci`
 
 ---
 
@@ -65,6 +65,7 @@ scope: `api`, `web`, `infra`, `ci`, `spec`
 ### ユーザー承認が必要 (MUST ASK)
 
 - AWS リソースの作成・変更・削除
+- アーキテクチャの重要な判断
 - GitHub Actions secrets / environment の設定
 - 外部公開に関わる設定変更（ドメイン、DNS、SG、公開ポート）
 - デプロイ操作
@@ -164,7 +165,7 @@ cd infra/environments/prd && terraform apply
 
 ## Security Rules
 
-- `.env`, `master.key`, `*.pem`, `*.key` は絶対に commit しない
+- `.env`, `config/master.key`, `config/credentials/*.key`, `*.pem`, `*.key`, `terraform.tfstate`, `terraform.tfvars` は絶対に commit しない
 - API キー・パスワードは環境変数 or AWS Secrets Manager / SSM Parameter Store で管理
 - Docker イメージに秘密情報を焼き込まない
 - `terraform.tfstate` は S3 remote backend で管理し、リポジトリに含めない
