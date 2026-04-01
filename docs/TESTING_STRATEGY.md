@@ -46,6 +46,10 @@
 
 「通っていないコード行」を視覚的に特定するために使用。
 
+### Angular 追加指標: 関数・文カバレッジ (Functions / Statements) — 100%
+
+Jest では functions と statements も 100% を要求する。Rails (SimpleCov) には該当指標がないため Angular 固有の基準。
+
 ### 除外対象
 
 | 対象 | 理由 |

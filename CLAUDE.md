@@ -41,6 +41,7 @@ AI が仕様駆動で自律開発し、テストで品質を保証する。
 
 - **分岐カバレッジ**: 95% 以上（主指標）
 - **行カバレッジ**: 100%（補助指標）
+- **関数・文カバレッジ**: 100%（Angular / Jest のみ）
 - 除外対象: `db/schema.rb`, `db/migrate/`, `config/`, `environment.ts`
 - カバレッジが基準を下回る PR はマージ不可
 
@@ -100,6 +101,7 @@ docker compose exec api bundle exec rspec
 docker compose exec api bundle exec rubocop
 docker compose exec api bundle exec rubocop -A
 docker compose exec api bundle exec rails db:migrate
+# ★ 新規マイグレーション作成は要承認。既存マイグレーション実行（初回セットアップ・CD）は承認不要
 docker compose exec api bundle exec rails console
 docker compose exec api bundle exec brakeman --no-pager -q
 
@@ -138,8 +140,10 @@ cd infra/environments/prd && terraform apply
 │   ├── src/
 │   └── jest.config.ts
 ├── infra/                  # Terraform
+│   ├── bootstrap/           # State 管理用 (初回のみ)
 │   ├── environments/prd/
-│   └── modules/
+│   ├── modules/
+│   └── .tflint.hcl
 ├── docs/
 │   ├── PROJECT_CHARTER.md
 │   ├── ARCHITECTURE.md
@@ -150,6 +154,7 @@ cd infra/environments/prd && terraform apply
 │   ├── DEVELOPMENT_GUIDE.md
 │   ├── SPECIFICATION_PROCESS.md
 │   ├── DEPLOYMENT.md
+│   ├── openapi/             # OpenAPI 3.1 定義
 │   ├── specs/              # 仕様書
 │   └── adr/                # Architecture Decision Records
 └── e2e/                    # Playwright E2E tests
