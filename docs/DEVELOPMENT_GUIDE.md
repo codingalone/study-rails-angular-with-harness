@@ -8,8 +8,10 @@
 
 ```
 仕様定義 → ユーザー承認 → テスト実装 → 実装 → テスト実行 → CI確認 → PR → マージ
-         ★必須承認      (RED確認)   (GREEN)  (カバレッジ確認)       ★必須承認
+         ★必須承認      (RED確認)   (GREEN)  (カバレッジ確認)       CI全Green後マージ
 ```
+
+> **Note:** ユーザーはコードレビューを行わない（PROJECT_CHARTER.md 参照）。PR のマージ条件は CI の全チェック通過であり、人によるコードレビュー承認は不要。仕様承認は開発着手前に完了している。
 
 ### 原則
 
@@ -73,6 +75,7 @@ docker compose exec api bundle exec rails db:create db:migrate db:seed
 | web | 127.0.0.1:4200 | Angular dev server |
 | postgres | 127.0.0.1:5432 | データベース |
 | redis | 127.0.0.1:6379 | キャッシュ |
+| e2e | — | E2E テスト (オンデマンド) |
 
 ### ポートバインド
 

@@ -71,6 +71,7 @@ paths-filter
 ### 承認プロセス
 
 - GitHub Environments の `production` に Required Reviewers を設定
+  (GitHub 上の名称は `production`、AWS/Terraform リソース名のプレフィックスは `prd`)
 - デプロイブランチ: main のみ
 
 ### ロールバック
@@ -88,7 +89,7 @@ paths-filter
 | Brakeman | Rails セキュリティ | PR / push |
 | Bundler Audit | Ruby gems 脆弱性 | PR / daily |
 | npm audit | Node packages 脆弱性 | PR / daily |
-| gitleaks | シークレット検出 | PR |
+| gitleaks / TruffleHog | シークレット検出 | PR |
 | Trivy | Docker イメージ | ビルド後 |
 | tfsec / checkov | Terraform | IaC 変更時 |
 | Dependabot | 全依存関係 | 自動 PR |
@@ -110,7 +111,7 @@ paths-filter
 │   ├── setup-rails/action.yml
 │   └── setup-angular/action.yml
 ├── dependabot.yml
-└── CODEOWNERS
+└── CODEOWNERS          # 通知用（ブロッキングレビューには使用しない）
 ```
 
 ### 認証 (OIDC)
@@ -153,7 +154,7 @@ main (protected)
 | 命名 | `{type}/{description}` (kebab-case) |
 | マージ方式 | Squash merge |
 | main 直接 push | 禁止 |
-| Required status checks | lint, test, security |
+| Required status checks | lint, test, security（CI による自動チェックのみ。人によるコードレビュー承認は不要） |
 | 寿命 | 最大 3 営業日 |
 
 ---

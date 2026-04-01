@@ -18,7 +18,7 @@ AI が仕様駆動で自律開発し、テストで品質を保証する。
 | Database | PostgreSQL 16 |
 | Cache | Redis 7 |
 | Local Dev | Docker Compose |
-| Infrastructure | AWS (Terraform) |
+| Infrastructure | AWS (Terraform ~> 1.9) |
 | CI/CD | GitHub Actions |
 | E2E Test | Playwright |
 | Backend Test | RSpec + SimpleCov |
@@ -112,8 +112,8 @@ docker compose exec web npx ng build --configuration=production
 docker compose exec e2e npx playwright test
 
 # Terraform (要ユーザー承認)
-cd infra && terraform plan
-cd infra && terraform apply
+cd infra/environments/prd && terraform plan
+cd infra/environments/prd && terraform apply
 ```
 
 ---
@@ -166,6 +166,7 @@ cd infra && terraform apply
 - `--privileged` モード禁止、Docker ソケットマウント禁止
 - `terraform plan` の出力は必ずユーザーに提示してから `apply`
 - Free Tier を意識し、リソース作成前にコスト見積もりを提示
+- シークレット管理は原則 SSM Parameter Store (SecureString)。高頻度ローテーション対象のみ Secrets Manager を使用
 
 ## Host Protection
 
