@@ -27,8 +27,8 @@
 
 ```
 draft → review → approved → implemented → verified
-  ↑        |
-  └── (差し戻し)
+  ↑        |                                  |
+  └── (差し戻し)                        deprecated (後継仕様に置換)
 ```
 
 | ステータス | 意味 | 遷移条件 |
