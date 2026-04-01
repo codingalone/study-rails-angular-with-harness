@@ -24,6 +24,7 @@
 - **バックエンド**: Rails API を ECS Fargate で実行
 - **通信方式**: REST API (JSON)、OpenAPI 3.1 で API 契約を管理
 - **認証**: JWT (RS256)（有効期限等の詳細はセキュリティアーキテクチャ §5 参照）
+- **同一オリジン配信**: CloudFront で SPA と API を同一オリジン配下に統合（`/api/*` → ALB へルーティング）。CSP の `connect-src 'self'` で API 通信を許可。
 
 ---
 
