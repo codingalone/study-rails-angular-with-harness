@@ -1,0 +1,69 @@
+# ============================================================
+# WARNING: This is a PUBLIC repository.
+# Never commit secrets, credentials, internal IPs, AWS account IDs,
+# or any sensitive configuration values.
+# ============================================================
+
+# --- Environment Variables ---
+.env
+.env.*
+!.env.example
+
+# --- Rails ---
+api/config/master.key
+api/config/credentials/*.key
+api/log/*
+api/tmp/*
+api/storage/*
+api/vendor/bundle
+api/.bundle
+
+# --- Angular ---
+web/node_modules/
+web/dist/
+web/.angular/
+
+# --- E2E (Playwright) ---
+e2e/node_modules/
+e2e/test-results/
+e2e/playwright-report/
+
+# --- Docker ---
+docker-compose.override.yml
+
+# --- Terraform ---
+infra/**/*.tfstate
+infra/**/*.tfstate.backup
+infra/**/.terraform/
+infra/**/*.tfvars
+!infra/**/*.tfvars.example
+infra/**/tfplan
+infra/**/plan.json
+
+# --- IDE ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Claude Code ---
+.claude/settings.local.json
+
+# --- Coverage Reports ---
+api/coverage/
+web/coverage/
+
+# --- Security (SSH/SSL keys) ---
+*.pem
+*.key
+!api/config/credentials/*.key
+
+# --- Misc ---
+*.log
+*.pid
+*.seed
