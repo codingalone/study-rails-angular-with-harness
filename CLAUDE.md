@@ -174,6 +174,31 @@ cd infra/environments/prd && terraform apply
 - Free Tier を意識し、リソース作成前にコスト見積もりを提示
 - シークレット管理は原則 SSM Parameter Store (SecureString)。高頻度ローテーション対象のみ Secrets Manager を使用
 
+## AI Cross-Review Process
+
+仕様書・設計ドキュメント・開発計画の PR マージ前に、Codex と Gemini によるクロスレビューを実施する。
+
+### 原則
+
+- **両レビューアーが PASS するまで修正を繰り返す**（途中で打ち切らない）
+- Critical / Medium の指摘は修正必須
+- Low は対応任意（justified でスキップ可）
+- レビュー結果は PR コメントとして記録（監査証跡）
+
+### レビューアー構成
+
+| レビューアー | 観点 |
+|-------------|------|
+| Codex (gpt-5.4) | コード品質、パフォーマンス、一貫性 |
+| Gemini (gemini-2.5-flash) | セキュリティ、エッジケース、仕様整合性 |
+
+### 終了条件
+
+- 両レビューアーが 0 Critical / 0 Medium を返す
+- 最終レビューサマリーを PR コメントに投稿
+
+---
+
 ## Host Protection
 
 母艦 MacBook への破壊的変更は禁止。すべて Docker 内で完結させる。
