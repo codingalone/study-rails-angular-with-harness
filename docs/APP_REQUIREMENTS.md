@@ -142,7 +142,7 @@ Client (顧客)
 | end_date | date | NOT NULL |
 | auto_renew | boolean | DEFAULT false |
 | renewal_period_months | integer | DEFAULT 12 |
-| billing_day | integer (1-28) | DEFAULT 末日、締め日 |
+| billing_day | integer (1-28) | DEFAULT 28、締め日 |
 | payment_due_days | integer | DEFAULT 30 |
 | notes | text | |
 
