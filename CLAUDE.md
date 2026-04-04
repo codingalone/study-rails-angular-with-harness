@@ -192,6 +192,28 @@ cd infra/environments/prd && terraform apply
 | Codex (gpt-5.4) | コード品質、パフォーマンス、一貫性 |
 | Gemini (gemini-2.5-flash) | セキュリティ、エッジケース、仕様整合性 |
 
+### 実行方法
+
+#### Codex
+
+```bash
+codex exec --full-auto "<レビュープロンプト>"
+```
+
+- `codex exec` を使う（`codex` 単体は対話モード）
+- `--full-auto` フラグ必須（`--full-context` は存在しない）
+- モデル指定不要（デフォルトの gpt-5.4 を使用。ChatGPT アカウントでは他モデルは非対応）
+
+#### Gemini
+
+```bash
+gemini -p "<レビュープロンプト>"
+```
+
+- `-p` フラグで非対話（ヘッドレス）モード実行
+- 認証は OAuth（`~/.gemini/settings.json` の `oauth-personal`）。API キー不要
+- `curl` + `GEMINI_API_KEY` 方式は使わない（キー管理が煩雑、レートリミットに弱い）
+
 ### 終了条件
 
 - 両レビューアーが 0 Critical / 0 Medium を返す
