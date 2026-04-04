@@ -115,6 +115,9 @@ Rails.application.routes.draw do
         resources :contract_items, shallow: true
       end
       resources :invoices, only: %i[index show create update] do
+        collection do
+          post :generate    # 月次バッチ実行 (Sidekiq ジョブをトリガー)
+        end
         member do
           post :issue
           post :void
@@ -1405,6 +1408,7 @@ add_foreign_key :payments, :invoices, on_delete: :restrict
 |---------|------|------|------|----------------|------|
 | GET | /api/v1/invoices | 必要 | 全ロール | `client_id`, `contract_id`, `status`, `issue_date_from`, `issue_date_to`, `due_date_from`, `due_date_to`, `sort`, `direction`, `page`, `per_page` | 一覧取得 |
 | POST | /api/v1/invoices | 必要 | admin, accountant | - | 手動作成 |
+| POST | /api/v1/invoices/generate | 必要 | admin, accountant | `billing_period` (YYYY-MM) | 月次バッチ実行 (Sidekiq ジョブをトリガー) |
 | GET | /api/v1/invoices/:id | 必要 | 全ロール | - | 詳細取得 |
 | PATCH | /api/v1/invoices/:id | 必要 | admin, accountant | - | 更新 (draft のみ) |
 | POST | /api/v1/invoices/:id/issue | 必要 | admin, accountant | - | 発行 |
