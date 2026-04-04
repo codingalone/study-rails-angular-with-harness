@@ -156,7 +156,7 @@ main (protected)
 | 命名 | `{type}/{description}` (kebab-case) |
 | マージ方式 | Squash merge |
 | main 直接 push | 禁止 |
-| Required status checks | lint, test, security（CI による自動チェックのみ。人によるコードレビュー承認は不要） |
+| Required status checks | lint, test, security + AI クロスレビュー PASS（HARNESS_ARCHITECTURE.md §7.4 参照。人によるコードレビュー承認は不要） |
 | 寿命 | 最大 3 営業日 |
 
 ---
